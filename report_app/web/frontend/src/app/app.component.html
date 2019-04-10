@@ -1,0 +1,29 @@
+<html>
+<div id="formdiv">
+<form id="myform" class="border border-light p-5" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+  
+  <div id='insideform' formGroupName="ReportData" novalidate>
+  	<div id="titlediv"> 
+  		<span id="titleform" > Report name </span> 
+  	</div>
+
+  <input id="inputdata" type="text" id="ReportNameInput" class="form-control mb-4" placeholder="Enter name" formControlName="ReportName">
+    
+  <div id="titlediv">
+    <span id="titleform" > Start date </span>
+	</div>
+    
+  <input id="inputdata" type="date" id="ReportStartDate" class="form-control mb-4" formControlName="ReportStartDate">
+    
+	<div id="titlediv" >
+    <span id="titleform" > Finish date </span>
+	</div>
+    
+  <input id="inputdata" type="date" id="ReportFinish" class="form-control mb-4" formControlName="ReportFinishDate">
+  
+  <input type="submit" id="submit" value="Start" /> 
+  </div>
+
+</form>
+</div>
+</html>

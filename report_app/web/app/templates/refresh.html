@@ -1,0 +1,42 @@
+<p> ind </p>
+{{indirect_launch}}
+<p> end </p>
+
+
+{%if indirect_launch == None %}
+
+<head>  
+<link rel="stylesheet" href={{css_url}}>
+</head>
+
+
+<body>
+<p> ind1 </p>
+{{indirect_launch}}
+<p> end1 </p>
+
+	{% block refreshform %}
+	<form id ="refreshform">
+		{% autoescape false %}
+		{% if resp %}
+			{% for line in resp | list %}
+			<i> {{ line }}</i>
+			{% endfor %}	
+		{%endif%}
+		{% endautoescape %}
+	</form>
+	{%endblock%}
+</body>
+
+{%else%}
+<p> ind2 </p>
+{{indirect_launch}}
+<p> end2 </p>
+		{% autoescape false %}
+		{% if resp %}
+			{% for line in resp | list %}
+			{{ line }}
+			{% endfor %}	
+		{%endif%}
+		{% endautoescape %}
+{%endif%}

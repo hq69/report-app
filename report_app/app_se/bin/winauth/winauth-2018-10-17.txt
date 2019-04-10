@@ -1,0 +1,1 @@
+otpauth://totp/Okta?secret=GEIMZJOXAS3OZCFK&digits=6&icon=Google

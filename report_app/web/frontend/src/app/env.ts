@@ -1,0 +1,1 @@
+export const API_URL = 'http://192.168.4.38:81';export const GET_REPORT_URL  = 'http://192.168.4.38:81';

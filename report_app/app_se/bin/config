@@ -1,0 +1,38 @@
+# IMPORTANT: DO NOT DELETE ANY OPTION FROM THIS FILE
+# OPTION LIST: OktaLogin OktaPassword SecretKey DisplayVisible XPos YPos XSize YSize ReportUrl TestArg ReportName ReportStartDate ReportFinishDate
+# EnableDisplay InterfaceType Platform Debug
+# CamelCase
+
+[Credentials]
+OktaLogin:den96560
+OktaPassword:esridenys124!
+SecretKey:GEIMZJOXAS3OZCFK
+
+[DriverOptions]
+#1|0
+DisplayVisible:1
+XPos:0
+YPos:0
+XSize:1600
+YSize:824
+
+[CommonOptions]
+
+ReportUrl:https://esri.my.salesforce.com/00O/o
+TestArg:test
+ReportName:mytest
+ReportStartDate:01/01/2018
+ReportFinishDate:01/11/2018
+LastDayToday:False
+
+
+[Misc]
+#True | False
+EnableDisplay:False
+#Chatter = 1 | 
+InterfaceType:1
+#Unix = 1 | Windows = 2 (N/A!)
+Platform:1
+#True | False
+
+

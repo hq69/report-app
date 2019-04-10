@@ -1,0 +1,41 @@
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+html{
+    background-color: #ADD8E6;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align:center;
+    margin-left:auto; 
+    margin-right:auto; 
+}
+
+
+
+#myform{
+   text-align:center;
+   top:30%;
+   left:35%;
+   width:400px;
+   border-left:   5px solid #FFF;
+   border-right:  5px solid #FFF;
+   border-top:    5px solid #FFF;
+   border-bottom: 5px solid #FFF;
+   padding: 10px 0;
+   margin: 50px auto;
+   background-color: gray;
+}
+
+

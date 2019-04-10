@@ -1,0 +1,144 @@
+  <head>     
+	<link rel="stylesheet" href={{css_url}}>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script> 
+
+		function makeTable(array) {
+    		
+    		var table = document.createElement('table');
+    		table.setAttribute('border',1)
+    		
+    		for (var i = 0; i < array.length; i++) 
+    		{
+        		var row = document.createElement('tr');
+        		splitted = array[i].split('/')
+        		for (var j = 0; j < splitted.length;j++)
+        		{
+				var cell = document.createElement('td');	
+				if ( splitted[j].trim().length > 0 )
+				{
+					cell.textContent = splitted[j].trim();
+            		row.appendChild(cell);
+				}
+        		}
+
+        	table.appendChild(row);
+        	div = document.createElement('div')
+        	div.appendChild(table)
+    		}
+    		return div;
+		}
+
+		function domObjectToString(domObject){   
+		    if(typeof(domObject) ==='object'){    
+		        var divElement = document.createElement('div') ;    
+		        divElement.appendChild(domObject);    
+		        return divElement.innerHTML;    
+		    }else{     
+		        return domObject.toString();     
+		    }
+		}
+
+	    $(document).ready(function () {
+
+		function load(url, element)
+		{
+    	req = new XMLHttpRequest();
+    	req.open("GET", url, false);
+    	req.send(null);
+    	respp = req.responseText
+
+    	textt = respp.trim().split('#')
+
+    	for (i = 0; i < textt.length; i++) {
+			if (textt[i] == ""){
+				textt.splice(i,1)
+			}
+		}
+
+    	mapped = textt.map(function(element, index) { return index + '/' + element; });
+
+    	stringss = domObjectToString(makeTable(mapped));
+    	element.innerHTML = stringss;
+		
+		}
+
+    	
+		load("/lastrun", document.getElementById("includedContent"));
+		//load("/refresh", document.getElementById("includedForm"));
+
+
+    	$('input[type="checkbox"]').change(function(){
+    	this.value = (Number(this.checked));
+		});
+
+    	$(function() {
+  		$("#myform").submit(function() {
+    		$("#myform *").filter(":input").each(function(){
+      			if ($(this).val() == '')
+        			$(this).prop("disabled", true);
+    			});
+    	return true; // ensure form still submits
+  		});
+	});
+	});
+    </script> 
+  </head> 
+
+<body>
+
+
+<div class = "row">
+<div class = "column">
+<form id ="myform" action="/refresh" method = "get">
+	<b>Last runs</b>
+
+	<div id="includedContent"></div>
+
+	<div>
+		<label for="start_date">Start date (dd/mm/yyyy) :</label>
+		<div>
+		<input type="text" name="start_date" id="start_date" value="">
+		</div>
+	</div>
+
+		<div>
+		<label for="start_date">Report name :</label>
+		<div>
+		<input type="text" name="report_name" id="report_name" value="">
+		</div>
+	</div>
+
+	<div>
+		<label for="finish_date">Finish date (dd/mm/yyyy)  :</label>
+		<div>
+		<input type="text" name="finish_date" id="finish_date" value="">
+		</div>
+	</div>
+
+	<div>
+		<label for="today_checked">Last day today</label>
+		<input type="checkbox" name="today_checked" value="1" id="today_checked">
+	</div>
+
+	<div>
+		<label for="enable_display">Last day today</label>
+		<input type="checkbox" name="today_checked" value="1" id="enable_display">
+	</div>
+
+	<div>
+		<label for="indirect_launch">Indirect launch</label>
+		<input type="checkbox" name="indirect_launch" value="1" id="indirect_launch">
+	</div>
+	
+	<div class="button">
+  	<button type="submit" id="sub">Start a report</button>
+	</div>
+
+</form>
+</div>
+<div class = "column">
+<div id="includedForm"> </div>
+</div>
+</div>
+</body>
